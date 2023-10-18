@@ -1,6 +1,10 @@
 body {
      background-image:url("https://sk-24artemis.github.io/spinning-fish/fish/RADICAL.jpg")!important;
-     text-align: center!important;
-     background-repeat:no-repeat;
      background-size:cover!important;
+     background-repeat:no-repeat;
      }
+{ 
+     margin: 0;
+     background: black;
+     text-align: center!important;
+}
