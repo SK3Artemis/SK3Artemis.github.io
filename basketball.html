@@ -1,0 +1,207 @@
+<html crosspilot-123=""><head>
+<style>
+			body {
+				margin: 0;
+			}
+			#text {
+				color: white;
+				font-size: 60px;
+				left: 200px;
+				top: 300px;
+				position: fixed;
+				font-family: "Comic Sans MS"
+			}
+			#clickme {
+				width: 100%;
+				height: 100%;
+				background-color: black;
+				z-index: 100;
+				position: fixed;
+			}
+			#clickme > span {
+				font-size: 40px;
+				position: fixed;
+				left: 100px;
+				top: 100px;
+				cursor: pointer;
+				color: white;
+			}
+			#lyrics {
+				font-family: Impact;
+				position: fixed;
+				bottom: 20px;
+				left: 300px;
+				text-shadow: black 1px 0 10px;
+				color: white;
+				font-size: 40px;
+			}
+		</style>
+<body>
+<div id="clickme">
+<span>click me or banana man will eat you</span>
+</div>
+<span id="text">ur mom is basketball</span>
+<span id="lyrics"></span>
+<script>
+			let basketball = new Audio();
+			document.getElementById("clickme").onclick = () => {
+				document.styleSheets[0].addRule("body", 'background-repeat: repeat;background-image: url("test/basketball.gif");');
+				
+				basketball.src = "test/basketball.mp3";
+				basketball.loop = true;
+				// basketball.onplay = startLyrics;
+				basketball.play().then(i => startLyrics());
+
+				document.getElementById("clickme").hidden = true;
+				let title = document.createElement("title");
+				title.innerText = "YOUR MOTHER IS A BASKETBALL";
+				document.body.appendChild(title);
+			}
+			function parseTime(t) {
+				return Number(t.split(':')[0]) * 60 * 1000 + Number(t.split(':')[1].split(".")[0]) * 1000 + (+t.split(".")[1]*10);
+			}
+			function parseLyrics(lyrics, callback) {
+				let sp = lyrics.split("\n");
+				sp = sp.map(l => [parseTime(l.slice(1, 9)), l.slice(10)]).filter(l => !!l[1]);
+				if(callback) {
+					setInterval(() => {
+						if(sp[0] && basketball.currentTime*1000 > sp[0][0]) {
+							callback(sp[0][1]);
+							sp.shift();
+						}
+					}, 25);
+				}
+				return sp;
+			}
+			function startLyrics() {
+				parseLyrics(`[00:08.70]Your mother's so fat they didn't call Ghostbusters
+[00:10.50]
+[00:10.80]Stay Puft Man was all, "I don't trust her."
+[00:12.90]
+[00:13.00]In other words, she ate him
+[00:14.40]
+[00:14.60]Stay Puft Man's big, so that's how we know she's fat--
+[00:16.20]
+[00:16.30]Just to clarify
+[00:17.40]
+[00:17.60]Basketball, a basketball
+[00:19.00]
+[00:19.10]Yeah, well, your mother is a basketball
+[00:21.20]
+[00:21.50]I went there: your mother is a basketball
+[00:23.20]
+[00:23.40]A basketball, she's a basketball
+[00:25.40]
+[00:25.70]Stop. Everybody take 5
+[00:27.30]
+[00:27.80]Good show, guys, but I don't feel a vibe
+[00:29.50]
+[00:29.60]Let it all out; don't hold back; incriminate
+[00:31.90]
+[00:32.00]Here on this court, you gotta push it to the limit, mate
+[00:34.20]
+[00:34.30]Reach deep inside, throw the shots, come alive
+[00:36.10]
+[00:36.20]I'll be here tweeting the whole thing live
+[00:38.10]
+[00:38.20]So guys, be loquacious; show off your gall!
+[00:40.40]
+[00:40.50]What did you say his mother was again? (A basketball.)
+[00:42.00]
+[00:42.70]A basketball
+[00:44.00]
+[00:44.10]After all, she's bouncing like she had a bottle of Adderall
+[00:46.90]
+[00:47.00]She's also fat--not sure if I mentioned that--
+[00:49.10]
+[00:49.20]Twenty-nine inches wide from all sides, to be exact
+[00:51.40]
+[00:51.50]Man, that's wack. I object! But, to change the subject
+[00:53.50]
+[00:53.60]I double dribbl'd your Mom's bombs and she liked it
+[00:55.60]
+[00:55.70]Now I'm flying higher than a window wiper
+[00:57.50]
+[00:57.60]Where you're airing free throws like a drunken sniper
+[00:59.80]
+[00:59.90]I believe you need a reason like you're Zeppelin Piper
+[01:01.70]
+[01:01.80]If your mom were on Tinder, I'd swipe her right 'cuz I like her
+[01:04.10]
+[01:04.20]She's spherical, meaningful, queer, and clerical
+[01:06.20]
+[01:06.30]A leather planet with the gravity that makes you feel the pull
+[01:08.50]
+[01:08.60]Ooh, feeling it now, moves smooth, so adroit
+[01:10.40]
+[01:10.50]World's hearing it now, down under to Detroit
+[01:12.60]
+[01:12.70]Pity the pal who fails to score a swish
+[01:14.80]
+[01:14.90]Never gonna hit the buzzer 'cuz she just won't fit!
+[01:17.10]
+[01:17.20]Not that curvy's bad boys, in fact, it's sad
+[01:18.80]
+[01:18.90]But the women's NBA's not all round and rad
+[01:21.00]
+[01:21.10]Don't be lose ground, be a man;
+[01:23.50]
+[01:23.60]Do they fit basketballs with gastric bands?
+[01:25.70]
+[01:25.80]Oedipus Rex, Electra complex
+[01:27.70]
+[01:27.80]Pegasus wings on these foot springs but I digress
+[01:29.90]
+[01:30.00]Surf's up! I board a tidal wave of jump
+[01:32.20]
+[01:32.30]Yo' 'boks probably don't even pump, chump
+[01:34.10]
+[01:34.20]Sup?
+[01:34.65]
+[01:34.70]I got pump up 'boks, I'll palm my ball in my hand
+[01:35.90]
+[01:36.00]And shoot infinity points from up across this land
+[01:38.10]
+[01:38.20]So you can't pass the man if you know what's best, son
+[01:40.40]
+[01:40.50]Lest you wanna become a tripping guessing lesson
+[01:42.40]
+[01:42.50]Slam dunk!
+[01:43.70]
+[01:43.80]Foul?
+[01:44.25]
+[01:44.30]Ref, make the call!
+[01:45.00]
+[01:45.10]Oh gee, oh gosh, this is all too much
+[01:46.70]
+[01:46.80]Guys, I gotta confide--I'm just an actress, y'all
+[01:49.00]
+[01:49.10]Picked last at the dang-blasted casting call
+[01:51.40]
+[01:51.50]Some games don't have winners
+[01:52.30]
+[01:52.40]Some chickens don't end up on plates for dinners
+[01:53.70]
+[01:53.80]They contain the innards
+[01:55.60]
+[01:55.70]But we know the sun will always rise and always fall
+[01:57.80]
+[01:57.90]And that your mother will always be a basketball
+[01:59.90]
+[02:00.00]Basketball, a basketball
+[02:01.60]
+[02:01.70]If you're listening, your mother is a basketball
+[02:03.80]
+[02:03.90]That's right, you! Your mother is a basketball
+[02:05.80]
+[02:05.90]She's a basketball, bouncing faster all
+[02:08.10]
+[02:08.20]Over the rainbow in the stair
+[02:17.10]
+[02:17.20]Somehow, somewhere, someway, somewhere
+[02:23.50] the end of lyrics cuz lazy to code`, l => {
+	document.getElementById("lyrics").innerText = l;
+});
+			}
+		</script>
+    <style></style></body>
