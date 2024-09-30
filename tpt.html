@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<div class="container contents">
+			<div class="Page" id="Page">
+												<div class="Subpage">					<form id="PowderSessionInfo" style="display: none;">
+<input type="hidden" name="Username" value="">
+<input type="hidden" name="SessionKey" value="">
+</form>
+<p id="status" style="display: initial;">Exception thrown, see JavaScript console</p>
+<img id="loading" src="/wasm/wasm-loading.webp" style="display: none;">
+<canvas style="display: initial; cursor: default;" class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1" width="629" height="424"></canvas>
+<script type="text/javascript">
+	(() => {
+		var promise;
+
+		window.create_powder_loader = () => {
+			if (promise === undefined) {
+				promise = new Promise((resolve, reject) => {
+					const script = document.createElement("script");
+					script.onload = () => {
+						resolve(window.create_powder);
+					};
+					document.head.appendChild(script);
+					script.src = '/wasm/powder.js';
+				});
+			}
+			return promise;
+		};
+	})();
+	(() => {
+		var canvas = document.getElementById('canvas');
+		var status = document.getElementById('status');
+		var loading = document.getElementById('loading');
+		window.mark_presentable = function() {
+			loading.style.display = 'none';
+			canvas.style.display = 'initial';
+		};
+		window.onerror = (event) => {
+			status.innerText = 'Exception thrown, see JavaScript console';
+			status.style.display = 'initial';
+		};
+		create_powder_loader().then(create_powder => create_powder({
+			canvas: (() => {
+				canvas.addEventListener("webglcontextlost", e => {
+					alert('WebGL context lost. You will need to reload the page.'); e.preventDefault();
+				}, false);
+				return canvas;
+			})(),
+			print: console.log,
+			printErr: console.log,
+		}));
+	})();
+</script>
+				</div>			</div>
+					</div>
+</body>
+</html>
