@@ -16,7 +16,7 @@
 <input type="hidden" name="SessionKey" value="">
 </form>
 <p id="status" style="display: initial;">Exception thrown, see JavaScript console</p>
-<img id="loading" src="/wasm/wasm-loading.webp" style="display: none;">
+<img id="loading" src="/wasm/tpt/wasm-loading.webp" style="display: none;">
 <canvas style="display: initial; cursor: default;" class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1" width="629" height="424"></canvas>
 <script type="text/javascript">
 	(() => {
@@ -30,7 +30,7 @@
 						resolve(window.create_powder);
 					};
 					document.head.appendChild(script);
-					script.src = '/wasm/powder.js';
+					script.src = '/wasm/tpt/powder.js';
 				});
 			}
 			return promise;
