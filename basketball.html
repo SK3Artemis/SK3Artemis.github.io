@@ -47,9 +47,9 @@
 <script>
 			let basketball = new Audio();
 			document.getElementById("clickme").onclick = () => {
-				document.styleSheets[0].addRule("body", 'background-repeat: repeat;background-image: url("test/basketball.gif");');
+				document.styleSheets[0].addRule("body", 'background-repeat: repeat;background-image: url("media/basketball.gif");');
 				
-				basketball.src = "test/basketball.mp3";
+				basketball.src = "media/basketball.mp3";
 				basketball.loop = true;
 				// basketball.onplay = startLyrics;
 				basketball.play().then(i => startLyrics());
