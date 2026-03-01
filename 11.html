@@ -6,17 +6,14 @@
 <script>if ('undefined' == typeof Symbol || 'undefined' == typeof Symbol.iterator) {delete Array.prototype.entries;}</script>
 </head>
 <body>
-<img src="https://www.gstatic.com/youtube/src/web/htdocs/img/monkey.png">
+<img src="./media/monkey.png">
 <p>Simple YouTube Search</p>
 <a href="https://www.youtube.com/" title="YouTube"><span>Youtube</span></a>
-<form id="search" action="https://www.youtube.com/results">
-<script>document.addEventListener('DOMContentLoaded', function () {document.getElementById('search').addEventListener('submit', function(e) {if (document.getElementById('search-input').value == '') {e.preventDefault();}});});</script>
+<form id="search" action="https://www.youtube.com/results" onsubmit="if (document.getElementById('search-input').value == '') return false;">
 <div>
-<input id="search-input" autocomplete="off" value="" type="text" placeholder="Search Input" title="Search">
-<script>document.addEventListener('DOMContentLoaded', function () {document.getElementById('search-input').addEventListener('keydown', function() {if (!this.value && (event.keyCode == 40 || event.keyCode == 32 || event.keyCode == 34)) {this.onkeydown = null; this.blur();}});});</script>
+<input id="search-input" autocomplete="off" value="" type="text" placeholder="Search Input" title="Search" name="search_query" onkeydown="if (!this.value &amp;&amp; (event.keyCode == 40 || event.keyCode == 32 || event.keyCode == 34)) {this.onkeydown = null; this.blur();}">
 </div>
-<button id="search-button" type="submit">
-<script>document.addEventListener('DOMContentLoaded', function () {document.getElementById('search-button').addEventListener('click', function(e) {if (document.getElementById('search-input').value == '') {e.preventDefault(); return;}e.preventDefault(); document.getElementById('search').submit();});});</script>
+<button id="search-button" type="submit" onclick="if (document.getElementById('search-input').value == '') return false; document.getElementById('search').submit(); return false;">
 <span>Search</span>
 </button>
 </form>
